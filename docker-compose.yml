@@ -18,3 +18,5 @@
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: mentorium
+    ports:
+      - 5433:5432
