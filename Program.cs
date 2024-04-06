@@ -2,6 +2,7 @@ using System.Security.Claims;
 using AspNet.Security.OAuth.GitHub;
 using Mentorium;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.EntityFrameworkCore;
 
 var configuration = new Configuration();
 
@@ -57,6 +58,11 @@ builder.Services.AddAuthentication(o =>
     });
 
 builder.Logging.ClearProviders().AddConsole();
+
+builder.Services.AddDbContext<MentoriumDbContext>(options =>
+{
+    options.UseNpgsql(builder.Configuration.GetConnectionString("WebApiDatabase"));
+});
 
 var app = builder.Build();
 
