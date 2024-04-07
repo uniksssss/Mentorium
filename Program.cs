@@ -20,7 +20,8 @@ builder.Services.AddCors(options =>
             .SetIsOriginAllowed(
                 origin => !string.IsNullOrWhiteSpace(origin) &&
                           origin.StartsWith("http://localhost", StringComparison.CurrentCultureIgnoreCase)
-                );
+                )
+            .WithExposedHeaders("Location");
     })  
 );  
 
@@ -34,6 +35,12 @@ builder.Services.AddAuthentication(o =>
     {
         o.LoginPath = "/signin";
         o.LogoutPath = "/signout";
+        o.Events.OnRedirectToLogin = context =>
+        {
+            context.Response.Headers.Location = context.RedirectUri;
+            context.Response.StatusCode = 401;
+            return Task.CompletedTask;
+        };
     })
     .AddGitHub(o =>
     {
@@ -62,13 +69,26 @@ var app = builder.Build();
 
 app.UseCors("Development");
 
+// app.Use((context, next) =>
+// {
+//     next();
+//
+//     if (context.Response.StatusCode == 302)
+//     {
+//         context.Response.StatusCode = 401;
+//     }
+//
+//     return Task.CompletedTask;
+// });
+
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseFileServer();
 
 app.UseSwagger();
 app.UseSwaggerUI();
 
 app.MapControllers();
-app.MapGet("/", () => "Hello, World!");
 
 app.Run();
