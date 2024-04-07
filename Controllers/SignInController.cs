@@ -11,6 +11,6 @@ public class SignInController : ControllerBase
     [HttpGet("/signin")]
     public async Task<IActionResult> SignIn([FromQuery] string returnUrl)
     {
-        return Challenge(new AuthenticationProperties {RedirectUri = returnUrl});
+        return Challenge(new AuthenticationProperties { RedirectUri = returnUrl });
     }
 }

@@ -1,4 +1,4 @@
-﻿using Mentorium.DataAccess;
+﻿using Mentorium.Models;
 
 namespace Mentorium.Services
 {

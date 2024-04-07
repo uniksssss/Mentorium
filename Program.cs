@@ -1,6 +1,7 @@
 using System.Security.Claims;
 using AspNet.Security.OAuth.GitHub;
 using Mentorium;
+using Mentorium.Models;
 using Mentorium.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
@@ -72,22 +73,17 @@ builder.Services.AddDbContext<MentoriumDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("WebApiDatabase"));
 });
 builder.Services.AddScoped<Repo, Repo>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 var app = builder.Build();
 
-app.UseCors("Development");
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetService<MentoriumDbContext>();
+    db!.Database.Migrate();   
+}
 
-// app.Use((context, next) =>
-// {
-//     next();
-//
-//     if (context.Response.StatusCode == 302)
-//     {
-//         context.Response.StatusCode = 401;
-//     }
-//
-//     return Task.CompletedTask;
-// });
+app.UseCors("Development");
 
 app.UseAuthentication();
 app.UseAuthorization();

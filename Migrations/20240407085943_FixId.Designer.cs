@@ -2,6 +2,7 @@
 using Mentorium;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Mentorium.Migrations
 {
     [DbContext(typeof(MentoriumDbContext))]
-    partial class MentoriumDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240407085943_FixId")]
+    partial class FixId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,7 +24,7 @@ namespace Mentorium.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Mentorium.Models.GithubUser", b =>
+            modelBuilder.Entity("Mentorium.DataAccess.GithubUser", b =>
                 {
                     b.Property<int>("GithubUserId")
                         .ValueGeneratedOnAdd()
@@ -39,7 +42,7 @@ namespace Mentorium.Migrations
                     b.ToTable("GithubUsers");
                 });
 
-            modelBuilder.Entity("Mentorium.Models.MentorInfo", b =>
+            modelBuilder.Entity("Mentorium.DataAccess.MentorInfo", b =>
                 {
                     b.Property<int>("MentorInfoId")
                         .ValueGeneratedOnAdd()
@@ -56,39 +59,39 @@ namespace Mentorium.Migrations
                     b.ToTable("MentorInfo");
                 });
 
-            modelBuilder.Entity("Mentorium.Models.MentorInfoStack", b =>
+            modelBuilder.Entity("Mentorium.DataAccess.MentorInfoStack", b =>
                 {
                     b.Property<int>("MentorInfoId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("MentoriumStackId")
+                    b.Property<int>("StackId")
                         .HasColumnType("integer");
 
-                    b.HasKey("MentorInfoId", "MentoriumStackId");
+                    b.HasKey("MentorInfoId", "StackId");
 
-                    b.HasIndex("MentoriumStackId");
+                    b.HasIndex("StackId");
 
                     b.ToTable("MentorInfoStacks");
                 });
 
-            modelBuilder.Entity("Mentorium.Models.MentoriumStack", b =>
+            modelBuilder.Entity("Mentorium.DataAccess.MentoriumStacks", b =>
                 {
-                    b.Property<int>("MentoriumStackId")
+                    b.Property<int>("MentoriumStacksId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("MentoriumStackId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("MentoriumStacksId"));
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("MentoriumStackId");
+                    b.HasKey("MentoriumStacksId");
 
                     b.ToTable("Stacks");
                 });
 
-            modelBuilder.Entity("Mentorium.Models.StudentInfo", b =>
+            modelBuilder.Entity("Mentorium.DataAccess.StudentInfo", b =>
                 {
                     b.Property<int>("StudentInfoId")
                         .ValueGeneratedOnAdd()
@@ -101,22 +104,22 @@ namespace Mentorium.Migrations
                     b.ToTable("StudentInfo");
                 });
 
-            modelBuilder.Entity("Mentorium.Models.StudentInfoStack", b =>
+            modelBuilder.Entity("Mentorium.DataAccess.StudentInfoStack", b =>
                 {
                     b.Property<int>("StudentInfoId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("MentoriumStackId")
+                    b.Property<int>("StackId")
                         .HasColumnType("integer");
 
-                    b.HasKey("StudentInfoId", "MentoriumStackId");
+                    b.HasKey("StudentInfoId", "StackId");
 
-                    b.HasIndex("MentoriumStackId");
+                    b.HasIndex("StackId");
 
                     b.ToTable("StudentInfoStacksStack");
                 });
 
-            modelBuilder.Entity("Mentorium.Models.TelegramUser", b =>
+            modelBuilder.Entity("Mentorium.DataAccess.TelegramUser", b =>
                 {
                     b.Property<int>("TelegramUserId")
                         .ValueGeneratedOnAdd()
@@ -134,7 +137,7 @@ namespace Mentorium.Migrations
                     b.ToTable("TelegramUsers");
                 });
 
-            modelBuilder.Entity("Mentorium.Models.User", b =>
+            modelBuilder.Entity("Mentorium.DataAccess.User", b =>
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
@@ -169,9 +172,9 @@ namespace Mentorium.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Mentorium.Models.GithubUser", b =>
+            modelBuilder.Entity("Mentorium.DataAccess.GithubUser", b =>
                 {
-                    b.HasOne("Mentorium.Models.User", "User")
+                    b.HasOne("Mentorium.DataAccess.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -180,47 +183,47 @@ namespace Mentorium.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Mentorium.Models.MentorInfoStack", b =>
+            modelBuilder.Entity("Mentorium.DataAccess.MentorInfoStack", b =>
                 {
-                    b.HasOne("Mentorium.Models.MentorInfo", "MentorInfo")
+                    b.HasOne("Mentorium.DataAccess.MentorInfo", "MentorInfo")
                         .WithMany()
                         .HasForeignKey("MentorInfoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Mentorium.Models.MentoriumStack", "MentoriumStack")
+                    b.HasOne("Mentorium.DataAccess.MentoriumStacks", "Stack")
                         .WithMany()
-                        .HasForeignKey("MentoriumStackId")
+                        .HasForeignKey("StackId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("MentorInfo");
 
-                    b.Navigation("MentoriumStack");
+                    b.Navigation("Stack");
                 });
 
-            modelBuilder.Entity("Mentorium.Models.StudentInfoStack", b =>
+            modelBuilder.Entity("Mentorium.DataAccess.StudentInfoStack", b =>
                 {
-                    b.HasOne("Mentorium.Models.MentoriumStack", "MentoriumStack")
+                    b.HasOne("Mentorium.DataAccess.MentoriumStacks", "Stack")
                         .WithMany()
-                        .HasForeignKey("MentoriumStackId")
+                        .HasForeignKey("StackId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Mentorium.Models.StudentInfo", "StudentInfo")
+                    b.HasOne("Mentorium.DataAccess.StudentInfo", "StudentInfo")
                         .WithMany()
                         .HasForeignKey("StudentInfoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("MentoriumStack");
+                    b.Navigation("Stack");
 
                     b.Navigation("StudentInfo");
                 });
 
-            modelBuilder.Entity("Mentorium.Models.TelegramUser", b =>
+            modelBuilder.Entity("Mentorium.DataAccess.TelegramUser", b =>
                 {
-                    b.HasOne("Mentorium.Models.User", "User")
+                    b.HasOne("Mentorium.DataAccess.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -229,15 +232,15 @@ namespace Mentorium.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Mentorium.Models.User", b =>
+            modelBuilder.Entity("Mentorium.DataAccess.User", b =>
                 {
-                    b.HasOne("Mentorium.Models.MentorInfo", "MentorInfo")
+                    b.HasOne("Mentorium.DataAccess.MentorInfo", "MentorInfo")
                         .WithMany()
                         .HasForeignKey("MentorInfoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Mentorium.Models.StudentInfo", "StudentInfo")
+                    b.HasOne("Mentorium.DataAccess.StudentInfo", "StudentInfo")
                         .WithMany()
                         .HasForeignKey("StudentInfoId")
                         .OnDelete(DeleteBehavior.Cascade)
