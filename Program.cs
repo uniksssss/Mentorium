@@ -32,7 +32,7 @@ builder.Services.AddAuthentication(o =>
     {
         o.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
         o.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-        o.DefaultChallengeScheme = GitHubAuthenticationDefaults.AuthenticationScheme;
+        o.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
     })
     .AddCookie(o =>
     {
@@ -40,8 +40,9 @@ builder.Services.AddAuthentication(o =>
         o.LogoutPath = "/signout";
         o.Events.OnRedirectToLogin = context =>
         {
-            context.Response.Headers.Location = context.RedirectUri;
+            var uri = new Uri(context.RedirectUri);
             context.Response.StatusCode = 401;
+            context.Response.Headers.Location = uri.AbsolutePath;
             return Task.CompletedTask;
         };
     })

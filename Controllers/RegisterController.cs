@@ -1,3 +1,4 @@
+using System.Text.Json.Nodes;
 using Mentorium.Models;
 using Mentorium.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -25,7 +26,7 @@ public class RegisterController : ControllerBase
     
     [Authorize]
     [HttpPost("/api/users/register")]
-    public async Task Register([FromForm(Name="first_name")] string firstName, [FromForm(Name="last_name")] string lastName)
+    public async Task Register([FromBody] JsonObject json)
     {
         var githubId = int.Parse(HttpContext.User.Claims
             .First(e => e.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier")
@@ -33,8 +34,8 @@ public class RegisterController : ControllerBase
 
         var user = new User
         {
-            FirstName = firstName,
-            LastName = lastName
+            FirstName = json["first_name"]!.GetValue<string>(),
+            LastName = json["last_name"]!.GetValue<string>()
         };
 
         await _userRepository.AddUserAsync(user, githubId);

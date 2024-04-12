@@ -23,13 +23,13 @@ public class UserRepository : IUserRepository
 
     public async Task AddUserAsync(User user, int githubId)
     {
+        await _dbContext.Users.AddAsync(user);
+        
         await _dbContext.GithubUsers.AddAsync(new GithubUser
         {
             GithubUserId = githubId,
             UserId = user.UserId
         });
-
-        await _dbContext.Users.AddAsync(user);
 
         await _dbContext.SaveChangesAsync();
     }

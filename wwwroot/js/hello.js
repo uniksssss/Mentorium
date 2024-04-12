@@ -6,16 +6,15 @@ const SIGN_IN_BUTTON = document.getElementById("sign_in_button");
 
 function aboutMe() {
     fetch(USER_INFO_URL, {
-        method: 'GET',
-        redirect: 'manual'
+        method: 'GET'
     })
         .then(
             response => {
-                if (response.status === 200) {
-                       response.text()
-                           .then(text => ABOUT_ME.innerText = text);
-                } else {
-                    throw new Error('The user is not authenticated');
+                console.log(response.status);
+                console.log(response.headers);
+                console.log(window.location);
+                if (response.status === 401) {
+                    signIn(response.headers.get('location'), window.location.toString());
                 }
             } 
         )
