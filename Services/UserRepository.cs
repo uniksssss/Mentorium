@@ -28,7 +28,7 @@ public class UserRepository : IUserRepository
         await _dbContext.GithubUsers.AddAsync(new GithubUser
         {
             GithubUserId = githubId,
-            UserId = user.UserId
+            User = user
         });
 
         await _dbContext.SaveChangesAsync();

@@ -37,7 +37,6 @@ public class RegisterController : ControllerBase
             FirstName = json["first_name"]!.GetValue<string>(),
             LastName = json["last_name"]!.GetValue<string>()
         };
-
         await _userRepository.AddUserAsync(user, githubId);
     }
 }
