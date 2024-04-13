@@ -1,34 +1,26 @@
-import {signIn} from "./signIn.js";
+import { signIn } from "./signIn.js";
 
-const form = document.createElement('form');
-form.id = 'register_form';
-form.onsubmit = function() {
-    const formData = new FormData(form);    
+function submitForm() {
+    event.preventDefault();
 
-    const object = {};
-    formData.forEach(function(value, key){
-        object[key] = value;
-    });
-    const json = JSON.stringify(object);
-    console.log(json);
+    var formData = {
+        first_name: document.getElementById("first_name").value,
+        last_name: document.getElementById("last_name").value
+    };
+
+    var jsonData = JSON.stringify(formData);
 
     fetch('http://localhost:5129/api/users/register', {
         method: 'POST',
-        body: json,
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: jsonData
     })
         .then(response => {
-            console.log(response.status);
-            console.log(response.headers);
+            console.log(response);
             if (response.status === 401) {
                 signIn(response.headers.get('location'), window.location.toString());
             }
-        })
-        .catch(error => {
-            console.log(error);
-        })
+        });
 }
-
-form.appendChild();
-
-const body = document.getElementsByTagName('body')[0];
-body.appendChild(form);
