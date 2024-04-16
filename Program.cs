@@ -71,7 +71,7 @@ builder.Logging.ClearProviders().AddConsole();
 
 builder.Services.AddDbContext<MentoriumDbContext>(options =>
 {
-    options.UseNpgsql(builder.Configuration.GetConnectionString("WebApiDatabase"));
+    options.UseNpgsql(configuration.ConnectionString);
 });
 builder.Services.AddScoped<Repo, Repo>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();

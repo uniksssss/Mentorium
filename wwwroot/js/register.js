@@ -3,12 +3,12 @@ import { signIn } from "./signIn.js";
 function submitForm() {
     event.preventDefault();
 
-    var formData = {
+    const formData = {
         first_name: document.getElementById("first_name").value,
         last_name: document.getElementById("last_name").value
     };
 
-    var jsonData = JSON.stringify(formData);
+    const jsonData = JSON.stringify(formData);
 
     fetch('http://localhost:5129/api/users/register', {
         method: 'POST',
