@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+    <form action="/api/users/register" method="post">
+        <label for="first_name">
+            <input type="text" name="first_name" id="first_name" />
+        </label>
+        <label for="last_name">
+            <input type="text" name="last_name" id="last_name" />
+        </label>
+        <br />
+        <button type="submit" onclick="submitForm()">Отправить</button>
+    </form>
+
+    <script src="js/register.js">
+    </script>
+</body>
+</html>

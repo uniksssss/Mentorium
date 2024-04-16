@@ -2,6 +2,7 @@
 using Mentorium;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Mentorium.Migrations
 {
     [DbContext(typeof(MentoriumDbContext))]
-    partial class MentoriumDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240407092329_ModelsRename")]
+    partial class ModelsRename
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,29 +64,29 @@ namespace Mentorium.Migrations
                     b.Property<int>("MentorInfoId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("MentoriumStackId")
+                    b.Property<int>("StackId")
                         .HasColumnType("integer");
 
-                    b.HasKey("MentorInfoId", "MentoriumStackId");
+                    b.HasKey("MentorInfoId", "StackId");
 
-                    b.HasIndex("MentoriumStackId");
+                    b.HasIndex("StackId");
 
                     b.ToTable("MentorInfoStacks");
                 });
 
-            modelBuilder.Entity("Mentorium.Models.MentoriumStack", b =>
+            modelBuilder.Entity("Mentorium.Models.MentoriumStacks", b =>
                 {
-                    b.Property<int>("MentoriumStackId")
+                    b.Property<int>("MentoriumStacksId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("MentoriumStackId"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("MentoriumStacksId"));
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("MentoriumStackId");
+                    b.HasKey("MentoriumStacksId");
 
                     b.ToTable("Stacks");
                 });
@@ -106,12 +109,12 @@ namespace Mentorium.Migrations
                     b.Property<int>("StudentInfoId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("MentoriumStackId")
+                    b.Property<int>("StackId")
                         .HasColumnType("integer");
 
-                    b.HasKey("StudentInfoId", "MentoriumStackId");
+                    b.HasKey("StudentInfoId", "StackId");
 
-                    b.HasIndex("MentoriumStackId");
+                    b.HasIndex("StackId");
 
                     b.ToTable("StudentInfoStacksStack");
                 });
@@ -188,22 +191,22 @@ namespace Mentorium.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Mentorium.Models.MentoriumStack", "MentoriumStack")
+                    b.HasOne("Mentorium.Models.MentoriumStacks", "Stack")
                         .WithMany()
-                        .HasForeignKey("MentoriumStackId")
+                        .HasForeignKey("StackId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("MentorInfo");
 
-                    b.Navigation("MentoriumStack");
+                    b.Navigation("Stack");
                 });
 
             modelBuilder.Entity("Mentorium.Models.StudentInfoStack", b =>
                 {
-                    b.HasOne("Mentorium.Models.MentoriumStack", "MentoriumStack")
+                    b.HasOne("Mentorium.Models.MentoriumStacks", "Stack")
                         .WithMany()
-                        .HasForeignKey("MentoriumStackId")
+                        .HasForeignKey("StackId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -213,7 +216,7 @@ namespace Mentorium.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("MentoriumStack");
+                    b.Navigation("Stack");
 
                     b.Navigation("StudentInfo");
                 });
