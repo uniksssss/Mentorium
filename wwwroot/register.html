@@ -5,18 +5,18 @@
     <title>Register</title>
 </head>
 <body>
-    <form action="/api/users/register" method="post">
-        <label for="first_name">
-            <input type="text" name="first_name" id="first_name" />
-        </label>
-        <label for="last_name">
-            <input type="text" name="last_name" id="last_name" />
-        </label>
-        <br />
-        <button type="submit" onclick="submitForm()">Отправить</button>
+    <form>
+        <label for="first_name">Имя</label>
+        <input type="text" name="first_name" id="first_name" required /> <br/>
+        <label for="last_name">Фамилия</label>
+        <input type="text" name="last_name" id="last_name" required /> <br/>
+        <label for="description">О себе</label>
+        <textarea name="description" id="description" required></textarea> <br/>
+        <label for="telegram">Телеграм id</label>
+        <input type="text" name="telegram" id="telegram" required> <br/>
+        <button type="submit">Отправить</button>
     </form>
-
-    <script src="js/register.js">
+    <script type="module" src="js/register.js">
     </script>
 </body>
 </html>

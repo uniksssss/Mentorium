@@ -11,31 +11,40 @@ public class UserRepository : IUserRepository
     {
         _dbContext = dbContext;
     }
-
-    public async Task<User> GetUserByGithubIdAsync(int githubId)
+    
+    public async Task<User?> GetUserByUserIdAsync(int userId)
     {
-        var githubUser = await _dbContext.GithubUsers
-            .Include(githubUser => githubUser.User)
-            .SingleOrDefaultAsync();
-
-        return githubUser?.User;
+        return await _dbContext.Users
+            .SingleOrDefaultAsync(e => e != null && e.UserId == userId);
     }
 
-    public async Task AddUserAsync(User user, int githubId)
+    public async Task<User?> GetUserByGithubIdAsync(int githubId)
+    {
+        return await _dbContext.Users
+            .SingleOrDefaultAsync(e => e != null && e.GithubId == githubId);
+    }
+
+    public async Task<User?[]> GetAllUsersAsync()
+    {
+        return await _dbContext.Users.ToArrayAsync();
+    }
+
+    public async Task<User?[]> GetAllMentorsAsync()
+    {
+        return await _dbContext.Users
+            .Where(e => e.IsMentor)
+            .ToArrayAsync();
+    }
+
+    public async Task AddUserAsync(User user)
     {
         await _dbContext.Users.AddAsync(user);
-        
-        await _dbContext.GithubUsers.AddAsync(new GithubUser
-        {
-            GithubUserId = githubId,
-            User = user
-        });
-
         await _dbContext.SaveChangesAsync();
     }
 
-    public Task UpdateUserAsync(User user, int githubId)
+    public Task UpdateUserAsync(User user)
     {
-        throw new NotImplementedException();
+        _dbContext.Users.Update(user);
+        return Task.CompletedTask;
     }
 }
