@@ -17,7 +17,15 @@ public class HomeController : ControllerBase
     [HttpGet("/")]
     public async Task<IActionResult> GetRoot()
     {
-        var html = await System.IO.File.ReadAllBytesAsync("wwwroot/index.html");
+        var html = await System.IO.File.ReadAllBytesAsync("wwwroot/home.html");
+        return File(html, "text/html");
+    }
+
+    [AllowAnonymous]
+    [HttpGet("/mentors")]
+    public async Task<IActionResult> GetMentors()
+    {
+        var html = await System.IO.File.ReadAllBytesAsync("wwwroot/mentors_list.html");
         return File(html, "text/html");
     }
 }

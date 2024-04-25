@@ -73,7 +73,6 @@ builder.Services.AddDbContext<MentoriumDbContext>(options =>
 {
     options.UseNpgsql(configuration.ConnectionString);
 });
-builder.Services.AddScoped<Repo, Repo>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 var app = builder.Build();

@@ -3,6 +3,7 @@ using System;
 using Mentorium;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Mentorium.Migrations
 {
     [DbContext(typeof(MentoriumDbContext))]
-    partial class MentoriumDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240416183838_MakeUniqueGithubId")]
+    partial class MakeUniqueGithubId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,9 +42,6 @@ namespace Mentorium.Migrations
 
                     b.Property<int?>("GithubId")
                         .HasColumnType("integer");
-
-                    b.Property<bool>("IsMentor")
-                        .HasColumnType("boolean");
 
                     b.Property<string>("LastName")
                         .IsRequired()

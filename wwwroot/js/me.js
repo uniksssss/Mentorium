@@ -11,13 +11,18 @@ function aboutMe() {
             response => {
                 console.log(response.status);
                 if (response.ok) {
-                    response.text()
-                        .then(text => {
-                            if (text) {
-                                ABOUT_ME.innerText = text;
-                                console.log(text);
-                            } else {
+                    response.json()
+                        .then(json => {
+                            if (!json) {
                                 ABOUT_ME.innerText = "Not Found";
+                            } else {
+                                ABOUT_ME.innerText = `
+                                Имя: ${json['firstName']}
+                                Фамилия: ${json['lastName']}
+                                Описание: ${json['description']}
+                                Телега: ${json['telegramId']}
+                                `;
+                                console.log(json);
                             }
                         });
                 } else {
