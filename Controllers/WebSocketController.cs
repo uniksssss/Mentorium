@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebSocketsSample.Controllers;
 
+[ApiController]
+[ApiExplorerSettings(IgnoreApi = true)]
 public class WebSocketController : ControllerBase
 {
     [Route("/ws")]

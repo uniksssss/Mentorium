@@ -74,6 +74,7 @@ builder.Services.AddDbContext<MentoriumDbContext>(options =>
     options.UseNpgsql(configuration.ConnectionString);
 });
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IChatRepository, ChatRepository>();
 
 var app = builder.Build();
 
