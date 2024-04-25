@@ -88,6 +88,11 @@ app.UseCors("Development");
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.UseWebSockets(new WebSocketOptions
+{
+    KeepAliveInterval = TimeSpan.FromMinutes(10)
+});
+
 app.UseFileServer();
 
 app.UseSwagger();
