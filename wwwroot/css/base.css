@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap&subset=cyrillic');
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+	font-size: 20px;
+	line-height: 1.5;
+	color: #ffffff;
+}
+
+h1 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 3em;
+}
+
+h2 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 2em;
+}
+
+@media (max-width: 991px) {
+	body {
+		font-size: 18px;
+	}
+}
+
+/* Utility */
+
+.none {
+	display: none !important;
+}
+
+.visually-hidden {
+	position: absolute;
+	opacity: 0;
+	visibility: hidden;
+	width: 0px;
+	height: 0px;
+	display: block;
+	margin-left: -10000px;
+	background: transparent;
+	font-size: 0;
+}
+
+/* Grid */
+
+.container {
+	width: 1400px;
+	padding-left: 70px;
+	padding-right: 70px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@media (max-width: 1399px) {
+	.container {
+		width: 100%;
+	}
+}
+
+.container-wide {
+	width: 1536px;
+}
+
+@media (max-width: 1535px) {
+	.container-wide {
+		width: 100%;
+	}
+}
+
+.no-scroll {
+	overflow: hidden;
+}

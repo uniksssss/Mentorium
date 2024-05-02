@@ -1,0 +1,134 @@
+.mentors-selection{
+    padding-top: 7px;
+    padding-bottom: 0px;
+}
+.mentors-wrapper {
+    display:flex;
+    justify-content: center;
+    grid-template-columns: repeat(4, 25%);
+    grid-template-rows: repeat(4, 25%);
+}
+
+.mentors-selection-header{
+    display: flex;
+    justify-content: center;
+    text-align: left;
+    font-size: 3em;
+}
+.mentors-selection-heading {
+    line-height: 100%;
+	font-size: 0.8em;
+    margin-bottom: 3%;
+	font-family: 'Russo one', serif;
+	color: #1A111E;
+}
+
+.mentors-selection-text {
+    color: #1A111E;
+    margin-bottom: 20px;
+    width: 600px;
+    z-index: auto;
+    
+}
+
+.best {
+    transform: rotate(-12deg);
+    width: 50%;
+    padding-left: 10%;
+    margin-top: 100px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 2em;
+    color: #1A111E;
+    opacity: 50%;
+}
+
+.wrapper {
+    display: grid;
+    text-align: right;
+    grid-column-gap: 1em;
+    grid-row-gap: 0em;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.photos {
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.photo1{
+    grid-column: 4;
+    grid-row: 1;
+    align-self: start;
+}
+.photo2{
+    grid-column: 4;
+    grid-row: 2;
+    align-self: start;
+}
+.photo3{
+    grid-column: 3;
+    grid-row: 2;
+    align-self: start;
+}
+.photo4{
+    grid-column: 4;
+    grid-row: 3;
+    align-self: start;
+}
+.photo5{
+    grid-column: 3;
+    grid-row: 3;
+    align-self: start;
+}
+.photo6{
+    grid-column: 2;
+    grid-row: 3;
+    align-self: start;
+}
+.photo7{
+    grid-column: 1;
+    grid-row: 4;
+    align-self: start;
+}
+.photo8{
+    grid-column: 2;
+    grid-row: 4;
+    align-self: start;
+}
+.photo9{
+    grid-column: 3;
+    grid-row: 4;
+    align-self: start;
+}
+.photo10{
+    grid-column: 4;
+    grid-row: 4;
+    align-self: start;
+}
+
+.photo1 img,
+.photo2 img,
+.photo3 img,
+.photo4 img,
+.photo5 img,
+.photo6 img,
+.photo7 img,
+.photo8 img,
+.photo9 img,
+.photo10 img {
+    padding-bottom: 2%;
+    padding-left: 2%;
+    width: 10vw;
+    height: 10vw;
+    object-fit: cover;
+}
+@media (max-width: 800px) {
+    .mentors-selection-heading{
+        line-height: 130%;
+		font-size: 1em;
+    }
+}

@@ -1,0 +1,37 @@
+.header {
+	padding-top: 17px;
+	padding-bottom: 17px;
+	border-bottom: 1px solid #d6d6d6;
+	line-height: 1;
+}
+
+.header-row {
+	display: flex;
+	align-items: center;
+	
+}
+
+.header-login {
+	display: flex;
+	align-items: center;
+	margin-left: auto;
+}
+
+.ava{
+	max-width: 70%;
+    height: auto;
+	display: flex;
+	align-items: center;
+	margin-left: auto;
+}
+
+.btn:hover, a.btn:hover {
+    background-color: #DF9CFF;
+    color: #1A111E;
+}
+
+@media (max-width: 1199px) {
+	.header-row {
+		justify-content: space-between;
+	}
+}

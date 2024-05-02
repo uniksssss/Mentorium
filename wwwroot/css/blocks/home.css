@@ -1,0 +1,103 @@
+.home {
+	position: relative;
+	padding: 70px 0;
+	min-height: 100%;
+	margin: 0 20px;
+}
+
+.home-content {
+	max-width: 1000px;
+}
+
+.home-heading {
+    margin-bottom: 10px;
+    font-family: 'Russo One', serif;
+    color: #FFFFFF;
+    font-size: 4em;
+    line-height: 1;
+	max-width: 1000px;
+}
+
+.home-heading + * {
+	margin-top: 10px;
+}
+
+.home-text {
+	color: #ffffff;
+	line-height: 144.5%;
+	max-width: 600px;
+}
+
+.home-text + * {
+	margin-top: 30px;
+}
+
+.home-button{
+	display: flex;
+}
+
+.button-find-mentor, .button-become-mentor{
+	display: inline-block;
+	min-height: 51px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	line-height: 1;
+	padding-left: 30px;
+	padding-right: 30px;
+	color: #fff;
+	font-size: 20px;
+	border-radius: 50px;
+}
+
+.home-button .button-find-mentor {
+    background-color: #DF9CFF;
+    border: 3px solid #1A111E;
+    color: #1A111E;
+	margin-right: 20px;
+}
+
+.home-button .button-become-mentor {
+    background-color: #1A111E;
+    border: 3px solid #DF9CFF;
+    color: #DF9CFF;
+}
+
+.home-button .button-find-mentor:hover{
+	opacity: 0.8;
+}
+
+.home-button .button-become-mentor:hover{
+	opacity: 0.8;
+}
+
+.home-bg-img {
+	z-index: -1;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #1A111E;
+
+}
+
+.home-bg-img img {
+	display: flex;
+	justify-content: center;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+
+@media (max-width: 768px) {
+	.home {
+		padding: 40px 0;
+		min-height: unset;
+	}
+	.home-heading {
+		font-size: 45px;
+		line-height: 1.2;
+	}
+
+}

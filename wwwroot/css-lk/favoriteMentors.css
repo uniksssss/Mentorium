@@ -1,0 +1,58 @@
+.favoriteMentors{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.mentor-grid {
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.mentor-card {
+    margin-bottom: 30px;
+    display: flex;
+    margin-left: 30px;
+}
+
+.mentor-photo {
+    margin-right: 20px;
+}
+
+.mentor-photo img {
+    max-width: 100%;
+}
+
+.mentor-content {
+    display: flex;
+    flex-direction: column;
+    color: #1A111E;
+}
+
+.skillsM{
+    flex-flow: row wrap;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.mentor-info h2, .mentor-info p {
+    margin: 5px 0;
+}
+
+.MentorsSkills {
+    background-color: #DF9CFF;
+    text-align: center;
+    display: inline;
+    padding: 5px 10px;
+    border-radius: 50px;
+}
+
+.LoversMentors{
+    color: #1A111E;
+    font-size: 1.5em;
+    margin-bottom: 30px;
+}
+
+.btn.toMentors{
+    margin-top: 40px;
+    width: 30%;
+    padding: 0px 30px
+}

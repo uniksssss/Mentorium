@@ -1,0 +1,195 @@
+.findmentors {
+	padding-top: 70px;
+	padding-bottom: 0px;
+}
+
+.findmentors-header {
+	display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 3em;
+}
+
+.findmentors-header-head {
+	max-width: 584px;
+}
+
+.findmentors-subtitle {
+	line-height: 157%;
+	font-size: 0.8em;
+	font-family: 'Russo one', serif;
+	color: #1A111E;
+}
+
+.findmentors-steps {
+	display: grid;
+	column-gap: 95px;
+    grid-template-columns: auto auto;
+    margin: 0 auto;
+	padding-left: 70px;
+	padding-right: 70px;
+	gap: 20px;
+}
+
+.step {
+	max-width: 390px;
+	padding-left: 10px;
+}
+
+.step-heading {
+	position: relative;
+	padding-left: 0px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-family: 'Russo one', serif;
+	font-size: 1.5em;
+	line-height: 150%;
+	color: #1A111E;
+}
+
+.step-heading::before {
+	position: absolute;
+	left: 0;
+	top: 0;
+	content: attr(data-number);
+	font-size: 1.5em;
+	line-height: 150%;
+}
+
+.step-text {
+	margin-top: 20px;
+	font-size: 1em;
+	/* line-height: 150%; */
+	color: #1A111E;
+}
+
+.step:nth-child(1) {
+    background-color: #DF9CFF;
+	padding-left: 34px;
+	border-radius: 50px;
+	max-width: 442px;
+	max-height: 450px;
+}
+
+.step:nth-child(2),
+.step:nth-child(3) {
+    background-color: #1A111E;
+	padding-left: 34px;
+	padding-bottom: 60px;
+	border-radius: 50px;
+	max-width: 520px;
+	max-height: 220px;
+}
+
+.step:nth-child(2) h4,
+.step:nth-child(3) h4,
+.step:nth-child(2) p,
+.step:nth-child(3) p {
+    color: white;
+}
+
+.button-anketa{
+	display: inline-block;
+	min-height: 51px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	line-height: 1;
+	padding-left: 30px;
+	padding-right: 30px;
+	color: #fff;
+	font-size: 3vw;
+	border-radius: 50px;
+	transition: opacity 0.2s ease;
+}
+.button-anketa:hover{
+	opacity: 0.8;
+}
+
+.step:nth-child(1) {
+    background-color: #DF9CFF;
+    padding-left: 34px;
+    border-radius: 50px;
+    max-width: 500px;
+    max-height: 450px;
+    position: relative; /* Добавляем позиционирование relative */
+}
+
+.step:nth-child(1) .button-anketa {
+    position: absolute; /* Добавляем абсолютное позиционирование */
+    bottom: 20px; /* Располагаем кнопку внизу элемента */
+    transform: none;
+}
+
+@media screen and (max-width: 800px) {
+    .button-anketa {
+        font-size: 2vw; /* уменьшаем размер шрифта кнопки для мобильных устройств */
+        padding: 5px 10px; /* добавляем отступы вокруг текста кнопки */
+        max-width: 150px; /* ограничиваем максимальную ширину кнопки */
+    }
+	.button-anketa a {
+        font-size: 0.8em; /* уменьшаем размер шрифта текста внутри ссылки кнопки для мобильных устройств */
+    }
+    .findmentors-subtitle {
+		line-height: 130%;
+		font-size: 0.8em;
+	}
+}
+
+
+@media (max-width: 1399px) {
+	.findmentors {
+		padding-top: 60px;
+		padding-bottom: 30px;
+		min-height: unset;
+	}
+
+	
+
+	.findmentors-header-content {
+		padding-top: 20px;
+	}
+
+	.findmentors-header {
+		padding-bottom: 52px;
+		flex-direction: column;
+	}
+}
+
+@media (max-width: 419px) {
+	.findmentors-steps {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media screen and (max-width: 1000px) {
+    .findmentors-steps {
+        grid-template-areas: 
+            "step1 step2"
+            "step1 step3";
+        grid-template-columns: auto;
+    }
+	.step:nth-child(2),
+	.step:nth-child(3) {
+		padding-top: 0px;
+	}
+
+    .step:nth-child(1) {
+        grid-area: step1;
+    }
+
+    .step:nth-child(2) {
+        grid-area: step2;
+    }
+
+    .step:nth-child(3) {
+        grid-area: step3;
+    }
+	.step-heading{
+		font-size: 0.8em;
+	}
+	.step-text p {
+        font-size: 0.7em;
+    }
+}
+

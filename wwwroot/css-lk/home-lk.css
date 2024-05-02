@@ -1,0 +1,24 @@
+.home-lk{
+    height: 170px;
+    margin: 0 20px;
+    background-color: #1A111E;
+    border-top-left-radius: 50px;
+	border-bottom-right-radius: 50px;
+}
+
+.home-lk-content{
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.name{
+    font-size: 1.5em;
+    margin-left: 40px;
+}
+
+.btn.button-chats {
+    background-color: #DF9CFF;
+    color: #1A111E;
+    margin-left: auto;
+}

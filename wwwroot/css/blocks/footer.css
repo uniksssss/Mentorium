@@ -1,0 +1,43 @@
+.footer {
+	padding: 7px 0 43px;
+	background-color: #1A111E;
+	color: #fff;
+}
+
+ul {
+    list-style-type: disc;
+}
+
+.Authors{
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.footer-nav {
+	font-size: 16px;
+    padding-left: 3%;
+}
+
+@media (max-width: 768px) {
+	.footer {
+		padding: 80px 0 100px;
+	}
+	.footer-logo + * {
+		margin-top: 50px;
+	}
+	.footer-nav {
+		font-size: 16px;
+	}
+}
+
+@media (max-width: 500px) {
+	.footer {
+		padding: 40px 0 60px;
+	}
+	.footer-logo + * {
+		margin-top: 40px;
+	}
+	.footer-nav {
+		font-size: 14px;
+	}
+}
