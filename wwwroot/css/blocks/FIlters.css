@@ -1,20 +1,21 @@
-.Filters{
-    height: 100%;  
+.Filters {
+    height: 100%;
     padding-top: 30px;
     padding-bottom: 30px;
     background-color: #DF9CFF;
 }
 
-.Filters-name{
+.Filters-name {
     color: #1A111E;
     font-size: 2em;
 }
 
-.Mentors{
+.Mentors {
     padding-top: 40px;
 }
+
 .mentor-grid {
-    display:flex;
+    display: flex;
     flex-wrap: wrap;
 }
 
@@ -38,13 +39,14 @@
     color: #1A111E;
 }
 
-.skillsM{
+.skillsM {
     flex-flow: row wrap;
     justify-content: space-between;
     margin-top: 10px;
 }
 
-.mentor-info h2, .mentor-info p {
+.mentor-info h2,
+.mentor-info p {
     margin: 5px 0;
 }
 
@@ -56,14 +58,121 @@
     border-radius: 50px;
 }
 
-.LoversMentors{
+.LoversMentors {
     color: #1A111E;
     font-size: 1.5em;
     margin-bottom: 30px;
 }
 
-.btn.toMentors{
+.btn.toMentors {
     margin-top: 40px;
     width: 30%;
     padding: 0px 30px
+}
+
+.filter-content{
+    display: flex;
+}
+.filter-select {
+    width: 100%;
+    padding: 5px;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+
+.wrapper-filter {
+    width: 400px;
+    border-radius: 10px;
+    padding: 30px 70px 0px;
+}
+
+.NameF {
+    color: #1A111E;
+    font-size: 1.5em;
+    padding-bottom: 20px;
+}
+
+/* .price-input {
+    width: 100%;
+    display: flex;
+    margin: 20px 0 30px;
+}
+
+.price-input .field {
+    display: flex;
+    width: 100%;
+    height: 45px;
+    align-items: center;
+    color: #1A111E;
+    font-size: 1em;
+}
+.separator{
+    color: #1A111E;
+}
+
+.field input {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    font-size: 19px;
+    margin-left: 12px;
+    border-radius: 5px;
+    text-align: center;
+    color: #1A111E;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.price-input .separator {
+    width: 130px;
+    display: flex;
+    font-size: 19px;
+    align-items: center;
+    justify-content: center;
+} */
+
+
+.slider {
+    height: 5px;
+    position: relative;
+    background: #fff;
+    border-radius: 5px;
+}
+
+.slider .progress {
+    height: 100%;
+    left: 25%;
+    right: 25%;
+    position: absolute;
+    border-radius: 5px;
+    background: #1A111E;
+}
+
+.range-input {
+    position: relative;
+}
+
+.range-input input {
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    top: -5px;
+    background: none;
+    pointer-events: none;
+    -webkit-appearance: none;
+    /* -moz-appearance: none; */
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    height: 17px;
+    width: 17px;
+    border-radius: 50%;
+    background: #1A111E;
+    pointer-events: auto;
+    -webkit-appearance: none;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
 }

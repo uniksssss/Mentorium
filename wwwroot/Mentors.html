@@ -4,13 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mentorium HTML project</title>
+    <title>Mentorium</title>
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/blocks/header.css" />
     <link rel="stylesheet" href="./css/blocks/footer.css" />
     <link rel="stylesheet" href="./css/blocks/Filters.css" />
     <link rel="stylesheet" href="./css/blocks/btn.css" />
+    <script src="filter.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
 </head>
@@ -31,6 +32,59 @@
         <div class="container">
             <h1 class="Filters-name">Фильтры</h1>
         </div>
+        <div class="filter-content">
+            <div class="d-flex">
+
+                <div class="wrapper-filter">
+                    <header>
+                        <h2 class="NameF">Цена</h2>
+                    </header>
+
+                    <div class="slider">
+                        <div class="progress"></div>
+                    </div>
+                    <div class="range-input">
+                        <input type="range" class="range-min" min="0" max="10000" value="2500" step="100">
+                        <input type="range" class="range-max" min="0" max="10000" value="7500" step="100">
+                    </div>
+                    <!-- <div class="price-input">
+                        <div class="field">
+                            <span>Min</span>
+                            <input type="number" class="input-min" value="2500">
+                        </div>
+                        <div class="separator">-</div>
+                        <div class="field">
+                            <span>Max</span>
+                            <input type="number" class="input-max" value="7500">
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="wrapper-filter">
+                <header>
+                    <h2 class="NameF">Опыт</h2>
+                </header>
+                <div class="slider">
+                    <div class="progress"></div>
+                </div>
+                <div class="range-input">
+                    <input type="range" class="range-max" min="0" max="10" value="2" step="1">
+                </div>
+            </div>
+
+            <div class="wrapper-filter">
+                <header>
+                    <h2 class="NameF">Стек</h2>
+                </header>
+                <select class="filter-select">
+                  <option value="html">HTML</option>
+                  <option value="css">CSS</option>
+                  <option value="javascript">JavaScript</option>
+                </select>
+              </div>
+        </div>
+
     </section>
     <section class="Mentors">
         <div class="wrapper">
@@ -46,7 +100,7 @@
                             <p class="MentorsSkills">Скилл 1</p>
                             <p class="MentorsSkills">Скилл 1</p>
                             <p class="MentorsSkills">Скилл 1</p>
-                        </div>                        
+                        </div>
                     </div>
                 </div>
                 <div class="mentor-card">
@@ -60,7 +114,7 @@
                             <p class="MentorsSkills">Скилл 1</p>
                             <p class="MentorsSkills">Скилл 1</p>
                             <p class="MentorsSkills">Скилл 1</p>
-                        </div>                        
+                        </div>
                     </div>
                 </div>
                 <div class="mentor-card">
@@ -74,7 +128,7 @@
                             <p class="MentorsSkills">Скилл 1</p>
                             <p class="MentorsSkills">Скилл 1</p>
                             <p class="MentorsSkills">Скилл 1</p>
-                        </div>                        
+                        </div>
                     </div>
                 </div>
                 <div class="mentor-card">
@@ -88,7 +142,7 @@
                             <p class="MentorsSkills">Скилл 1</p>
                             <p class="MentorsSkills">Скилл 1</p>
                             <p class="MentorsSkills">Скилл 1</p>
-                        </div>                        
+                        </div>
                     </div>
                 </div>
             </div>
@@ -110,6 +164,7 @@
             </div>
         </div>
     </footer>
+
 </body>
 
 </html>

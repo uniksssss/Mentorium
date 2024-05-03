@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentorium</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/blocks/header.css" />
+    <link rel="stylesheet" href="./css/blocks/chat.css" />
+    <link rel="stylesheet" href="./css/blocks/btn.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-row">
+                <div class="header-logo"><img src="./img/logo.svg" alt="Logo" /></div>
+                <div class="header-login">
+                    <img src="./img/ava.png" class="ava" alt="ava" />
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="chat">
+            <div class="container">
+                <div class="bubbleWrapper">
+                    <div class="inlineContainer">
+                        <img class="inlineIcon" src="./img/ava.png">
+                        <div class="otherBubble other">
+                            Здравствуйте, можно записаться на пробное занятие?
+                        </div>
+                    </div><span class="other">08:41</span>
+                </div>
+                <div class="bubbleWrapper">
+                    <div class="inlineContainer own">
+                        <img class="inlineIcon" src="./img/ava.png">
+                        <div class="ownBubble own">
+                            Здравствуйте! Когда вам будет удобно? Есть свободные окошки на выходных
+                        </div>
+                    </div><span class="own">08:55</span>
+                </div>
+                <div class="bubbleWrapper">
+                    <div class="inlineContainer">
+                        <img class="inlineIcon" src="./img/ava.png">
+                        <div class="otherBubble other">
+                            О, отлично. В воскресенье часов в 17?
+                        </div>
+                    </div>
+                </div><span class="other">10:13</span>
+                <div class="bubbleWrapper">
+                    <div class="inlineContainer own">
+                        <img class="inlineIcon" src="./img/ava.png">
+                        <div class="ownBubble own">
+                            Да, это время свободно. Встреча проходит онлайн, никакой подготовки не требуется. Записываю?
+                        </div>
+                    </div><span class="own">11:07</span>
+                </div>
+                
+                <div class="bubbleWrapper">
+                    <div class="inlineContainer">
+                        <img class="inlineIcon" src="./img/ava.png">
+                        <div class="otherBubble other">
+                            Да, спасибо! До воскресенья
+                        </div>
+                    </div><span class="other">11:11</span>
+                </div>
+                <div class="chat-box-footer">
+                    <textarea id="chat_input" placeholder="Сообщение"></textarea>
+                    <button id="send">
+                        <img src="./img/send.png" alt="Отправить">
+                    </button>
+                </div>
+            </div>
+
+        </section>
+    </main>
+</body>
+
+</html>
