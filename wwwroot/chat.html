@@ -148,6 +148,7 @@
         };
         socket.onerror = updateState;
         socket.onmessage = function (event) {
+            console.log(htmlEscape(event.data));
             commsLog.innerHTML += '<tr>' +
                 '<td class="commslog-server">Server</td>' +
                 '<td class="commslog-client">Client</td>' +

@@ -1,6 +1,6 @@
 ﻿namespace Mentorium.Models
 {
-    public class ChatDto
+    public class MessageDto
     {
         public int ChatId { get; set; }
         public int UserId { get; set; }
