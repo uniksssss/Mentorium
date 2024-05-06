@@ -1,3 +1,4 @@
+using Mentorium.Constants;
 using Mentorium.Models;
 using Mentorium.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -20,7 +21,7 @@ public class UsersController : ControllerBase
     public async Task Register([FromBody] UserDto userDto)
     {
         var githubId = int.Parse(HttpContext.User.Claims
-            .First(e => e.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier")
+            .First(e => e.Type == ClaimConstants.GithubIdClaimName)
             .Value);
 
         var user = new User
@@ -55,7 +56,7 @@ public class UsersController : ControllerBase
     public async Task<IActionResult> Me()
     {
         var githubId = int.Parse(HttpContext.User.Claims
-            .First(e => e.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier")
+            .First(e => e.Type == ClaimConstants.GithubIdClaimName)
             .Value);
 
         var user = await _userRepository.GetUserByGithubIdAsync(githubId);

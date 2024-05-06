@@ -31,7 +31,7 @@ namespace Mentorium.Services
 
         public async Task<Chat?[]> GetAllChatsAsync()
         {
-            return await _context.Chats.ToArrayAsync();
+            return await _context.Chats.Include(c => c.Users).ToArrayAsync();
         }
 
         public async Task<Message?[]> GetAllMessageByChatIdAsync(int chatId)
@@ -41,7 +41,10 @@ namespace Mentorium.Services
 
         public async Task<Chat?> GetChatByChatIdAsync(int chatId)
         {
-            return await _context.Chats.Where(c => c.ChatId == chatId).SingleOrDefaultAsync();
+            return await _context.Chats
+                .Include(c => c.Users)
+                .Where(c => c.ChatId == chatId)
+                .SingleOrDefaultAsync();
         }
 
         public async Task RemoveChatAsync(Chat chat)
