@@ -1,16 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Me</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentorium</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/blocks/header.css" />
+    <link rel="stylesheet" href="./css-lk/home-lk.css" />
+    <link rel="stylesheet" href="./css-lk/favoriteMentors.css" />
+    <link rel="stylesheet" href="./css/blocks/footer.css" />
+    <link rel="stylesheet" href="./css/blocks/btn.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
 </head>
-<body>
-<h1>Я</h1>
-<a href="http://localhost:5129/me">Я</a>
-<a href="http://localhost:5129/mentors">Менторы</a>
-<div id="about_me">
-</div>
 
-<script type="module" async src="js/me.js"></script>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-row">
+                <div class="header-logo"><img src="./img/logo.svg" alt="Logo" /></div>
+                <div class="header-login">
+                    <img src="./img/ava.png" class="ava" alt="ava" />
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="home-lk">
+        <div class="container">
+            <div class="home-lk-content">
+                <img src="./img/ava-invert.png" class="ava-inver" alt="ava" />
+                <h1 class="name" id="about_me">Ксения Плюснина</h1>
+                <a href="a" class="btn button-chats">Мои чаты</a>
+            </div>
+        </div>
+    </section>
+    <section class="favoriteMentors">
+        <div class="container">
+        <h1 class="LoversMentors">Любимые менторы</h1>
+        <div class="wrapper">
+            <div class="mentor-grid">
+                <div class="mentor-card">
+                    <div class="mentor-photo">
+                        <img src="./img/ava.png" alt="Mentor 1">
+                    </div>
+                    <div class="mentor-content">
+                        <h2>Имя Ментора 1</h2>
+                        <p>Опыт: 5 лет</p>
+                        <div class="skillsM">
+                            <p class="MentorsSkills">Скилл 1</p>
+                            <p class="MentorsSkills">Скилл 1</p>
+                            <p class="MentorsSkills">Скилл 1</p>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="mentor-card">
+                    <div class="mentor-photo">
+                        <img src="./img/ava.png" alt="Mentor 1">
+                    </div>
+                    <div class="mentor-content">
+                        <h2>Имя Ментора 1</h2>
+                        <p>Опыт: 5 лет</p>
+                        <div class="skillsM">
+                            <p class="MentorsSkills">Скилл 1</p>
+                            <p class="MentorsSkills">Скилл 1</p>
+                            <p class="MentorsSkills">Скилл 1</p>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="mentor-card">
+                    <div class="mentor-photo">
+                        <img src="./img/ava.png" alt="Mentor 1">
+                    </div>
+                    <div class="mentor-content">
+                        <h2>Имя Ментора 1</h2>
+                        <p>Опыт: 5 лет</p>
+                        <div class="skillsM">
+                            <p class="MentorsSkills">Скилл 1</p>
+                            <p class="MentorsSkills">Скилл 1</p>
+                            <p class="MentorsSkills">Скилл 1</p>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="mentor-card">
+                    <div class="mentor-photo">
+                        <img src="./img/ava.png" alt="Mentor 1">
+                    </div>
+                    <div class="mentor-content">
+                        <h2>Имя Ментора 1</h2>
+                        <p>Опыт: 5 лет</p>
+                        <div class="skillsM">
+                            <p class="MentorsSkills">Скилл 1</p>
+                            <p class="MentorsSkills">Скилл 1</p>
+                            <p class="MentorsSkills">Скилл 1</p>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="toMentors">
+            <a href="#" class="btn toMentors">Перейти в подборку</a>
+        </div>
+    </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <img class="footer-logo" src="./img/logo-footer.png" alt="Logo" />
+                <nav class="footer-nav">
+                    <p class="Authors">Авторы:</p>
+                    <ul>
+                        <li>Бобрик Вячеслав (@CLABA0101)</li>
+                        <li>Сапегин Александр (@ferdeaa)</li>
+                        <li>Плюснина Ксения (@Uniksssss)</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
+    <script type="module" async src="js/me.js"></script>
 </body>
+
 </html>

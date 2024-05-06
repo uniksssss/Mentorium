@@ -1,7 +1,9 @@
 import {signIn} from './signIn.js'
 
 const MENTORS_URL = 'http://localhost:5129/api/users/all_mentors';
-const TABLE = document.querySelector('table');
+const grid = document.querySelector('.mentor-grid');
+const prototypeCard = document.querySelector('.mentor-card');
+grid.removeChild(prototypeCard);
 
 function loadMentorsInfo() {
     fetch(MENTORS_URL, {
@@ -17,25 +19,10 @@ function loadMentorsInfo() {
                             }
                             
                             for (const user of json) {
-                                const row = document.createElement('tr');
-                                
-                                const firstNameColumn = document.createElement('td');
-                                firstNameColumn.textContent = user['firstName'];
-                                row.appendChild(firstNameColumn);
-
-                                const lastNameColumn = document.createElement('td');
-                                lastNameColumn.textContent = user['lastName'];
-                                row.appendChild(lastNameColumn);
-
-                                const descriptionColumn = document.createElement('td');
-                                descriptionColumn.textContent = user['description'];
-                                row.appendChild(descriptionColumn);
-
-                                const telegramColumn = document.createElement('td');
-                                telegramColumn.textContent = user['telegramId'];
-                                row.appendChild(telegramColumn);
-                                
-                                TABLE.querySelector('tbody').appendChild(row);
+                                const card = prototypeCard.cloneNode(true);
+                                card.querySelector('.mentor-content-name').innerText = `${user['firstName']} ${user['lastName']}`;
+                                card.querySelector('.mentor-content-description').innerText = `${user['description']}`;
+                                grid.appendChild(card);
                             }
                         });
                 } else if (response.status === 401) {
@@ -47,7 +34,6 @@ function loadMentorsInfo() {
         )
         .catch(
             error => {
-                TABLE.querySelector('tbody').textContent = error.innerText;
             }
         )
 }

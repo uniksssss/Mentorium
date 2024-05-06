@@ -16,13 +16,7 @@ function aboutMe() {
                             if (!json) {
                                 ABOUT_ME.innerText = "Not Found";
                             } else {
-                                ABOUT_ME.innerText = `
-                                Имя: ${json['firstName']}
-                                Фамилия: ${json['lastName']}
-                                Описание: ${json['description']}
-                                Телега: ${json['telegramId']}
-                                `;
-                                console.log(json);
+                                ABOUT_ME.innerText = `${json['firstName']} ${json['lastName']}`;
                             }
                         });
                 } else {

@@ -28,4 +28,12 @@ public class HomeController : ControllerBase
         var html = await System.IO.File.ReadAllBytesAsync("wwwroot/mentors_list.html");
         return File(html, "text/html");
     }
+    
+    [AllowAnonymous]
+    [HttpGet("/chat")]
+    public async Task<IActionResult> GetChat()
+    {
+        var html = await System.IO.File.ReadAllBytesAsync("wwwroot/chat.html");
+        return File(html, "text/html");
+    }
 }

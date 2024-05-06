@@ -1,26 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Mentors</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentorium</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/blocks/header.css" />
+    <link rel="stylesheet" href="./css/blocks/footer.css" />
+    <link rel="stylesheet" href="./css/blocks/Filters.css" />
+    <link rel="stylesheet" href="./css/blocks/btn.css" />
+    <script src="filter.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
 </head>
+
 <body>
-<h1>Менторы</h1>
-<a href="http://localhost:5129/me">Я</a>
-<a href="http://localhost:5129/mentors">Менторы</a>
-<table>
-    <thead>
-        <tr>
-            <th scope="col">Имя</th>
-            <th scope="col">Фамилия</th>
-            <th scope="col">Описание</th>
-            <th scope="col">Телеграм</th>
-        </tr>
-    </thead>
-    <tbody>
-        
-    </tbody>
-</table>
-<script type="module" src="js/mentors_list.js"></script>
+    <header class="header">
+        <div class="container">
+            <div class="header-row">
+                <div class="header-logo"><img src="./img/logo.svg" alt="Logo" /></div>
+                <div class="header-login">
+                    <img src="./img/ava.png" class="ava" alt="ava" />
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="Filters">
+        <div class="container">
+            <h1 class="Filters-name">Фильтры</h1>
+        </div>
+        <div class="filter-content">
+            <div class="d-flex">
+
+                <div class="wrapper-filter">
+                    <header>
+                        <h2 class="NameF">Цена</h2>
+                    </header>
+
+                    <div class="slider">
+                        <div class="progress"></div>
+                    </div>
+                    <div class="range-input">
+                        <input type="range" class="range-min" min="0" max="10000" value="2500" step="100">
+                        <input type="range" class="range-max" min="0" max="10000" value="7500" step="100">
+                    </div>
+                    <!-- <div class="price-input">
+                        <div class="field">
+                            <span>Min</span>
+                            <input type="number" class="input-min" value="2500">
+                        </div>
+                        <div class="separator">-</div>
+                        <div class="field">
+                            <span>Max</span>
+                            <input type="number" class="input-max" value="7500">
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+
+            <div class="wrapper-filter">
+                <header>
+                    <h2 class="NameF">Опыт</h2>
+                </header>
+                <div class="slider">
+                    <div class="progress"></div>
+                </div>
+                <div class="range-input">
+                    <input type="range" class="range-max" min="0" max="10" value="2" step="1">
+                </div>
+            </div>
+
+            <div class="wrapper-filter">
+                <header>
+                    <h2 class="NameF">Стек</h2>
+                </header>
+                <select class="filter-select">
+                    <option value="html">HTML</option>
+                    <option value="css">CSS</option>
+                    <option value="javascript">JavaScript</option>
+                </select>
+            </div>
+        </div>
+
+    </section>
+    <section class="Mentors">
+        <div class="wrapper">
+            <div class="mentor-grid">
+                <div class="mentor-card">
+                    <div class="mentor-photo">
+                        <img src="./img/ava.png" alt="Mentor 1">
+                    </div>
+                    <div class="mentor-content">
+                        <h2 class="mentor-content-name">Имя Ментора 1</h2>
+                        <p class="mentor-content-description">Опыт: 5 лет</p>
+                        <div class="skillsM">
+                            <p class="MentorsSkills">Скилл 1</p>
+                            <p class="MentorsSkills">Скилл 1</p>
+                            <p class="MentorsSkills">Скилл 1</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <img class="footer-logo" src="./img/logo-footer.png" alt="Logo" />
+                <nav class="footer-nav">
+                    <p class="Authors">Авторы:</p>
+                    <ul>
+                        <li>Бобрик Вячеслав (@CLABA0101)</li>
+                        <li>Сапегин Александр (@ferdeaa)</li>
+                        <li>Плюснина Ксения (@Uniksssss)</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
+    <script type="module" src="js/mentors_list.js"></script>
 </body>
+
 </html>
