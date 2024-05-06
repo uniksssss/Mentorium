@@ -67,7 +67,7 @@ socket.onmessage = function (event) {
     let newMessage = document.createElement('div');
     newMessage.classList.add('bubbleWrapper');
     newMessage.innerHTML = `<div class="inlineContainer">
-                        <img class="inlineIcon" src="./img/ava.png">
+                        <img class="inlineIcon" src="/img/ava.png">
                         <div class="otherBubble other">
                             ${message.MessageText}
                         </div>
@@ -76,7 +76,7 @@ socket.onmessage = function (event) {
     lastMessage.insertAdjacentElement('afterend', newMessage);
 };
 
-sendButton.addEventListener('onclick', function () {
+sendButton.addEventListener('click', function () {
     if (!socket || socket.readyState !== WebSocket.OPEN) {
         alert("socket not connected");
     }
@@ -84,7 +84,8 @@ sendButton.addEventListener('onclick', function () {
         "ChatId": CHAT_ID,
         "MessageId": sendMessage.value
     };
-    socket.send(data);
+    console.log(data);
+    socket.send(JSON.stringify(data));
     chat.innerHTML += '<tr>' +
         '<td class="commslog-client">Client</td>' +
         '<td class="commslog-server">Server</td>' +
