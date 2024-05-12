@@ -1,3 +1,4 @@
+using Mentorium.Migrations;
 using Mentorium.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -31,7 +32,7 @@ public class UserRepository : IUserRepository
 
     public async Task<User?[]> GetAllMentorsAsync()
     {
-        return await _dbContext.Users
+        return await _dbContext.Users.Include(u => u.Skills)
             .Where(e => e.IsMentor)
             .ToArrayAsync();
     }
@@ -46,5 +47,16 @@ public class UserRepository : IUserRepository
     {
         _dbContext.Users.Update(user);
         return Task.CompletedTask;
+    }
+
+    public async Task<Skill?[]> GetAllSkillsAsync()
+    {
+        return await _dbContext.Skills.ToArrayAsync();
+    }
+
+    public async Task<Skill?[]> GetSkillsByIdAsync(ICollection<int> skillsId)
+    {
+        var set = new HashSet<int>(skillsId);
+        return await _dbContext.Skills.Where(s => set.Contains(s.SkillId)).ToArrayAsync();
     }
 }

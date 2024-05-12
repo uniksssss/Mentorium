@@ -12,5 +12,6 @@ namespace Mentorium.Models
         public int? GithubId { get; set; }
         public string? TelegramId { get; set; }
         public bool IsMentor { get; set; }
+        public ICollection<Skill> Skills { get; set; } = [];
     }
 }

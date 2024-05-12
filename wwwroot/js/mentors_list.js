@@ -47,6 +47,14 @@ function loadMentorsInfo() {
                                 });
                                 card.querySelector('.mentor-content-name').innerText = `${user['firstName']} ${user['lastName']}`;
                                 card.querySelector('.mentor-content-description').innerText = `${user['description']}`;
+                                const skillsBlock = card.querySelector('.skillsM');
+                                skillsBlock.innerText = "";
+                                for (const skill of user['skills']) {
+                                    const newSkill = document.createElement("p");
+                                    newSkill.className = "MentorsSkills";
+                                    newSkill.textContent = skill['skillName'];
+                                    skillsBlock.appendChild(newSkill);
+                                }
                                 grid.appendChild(card);
                             }
                         });

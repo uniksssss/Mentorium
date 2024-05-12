@@ -33,6 +33,14 @@ public class UsersController : ControllerBase
             TelegramId = userDto.TelegramId,
             IsMentor = userDto.IsMentor
         };
+        if (userDto.skillsId is not null)
+        {
+            var skills = await _userRepository.GetSkillsByIdAsync(userDto.skillsId);
+            foreach (var skill in skills)
+            {
+                user.Skills.Add(skill);
+            }
+        }
         await _userRepository.AddUserAsync(user);
     }
     
@@ -48,6 +56,14 @@ public class UsersController : ControllerBase
             TelegramId = userDto.TelegramId,
             IsMentor = userDto.IsMentor
         };
+        if (userDto.skillsId is not null)
+        {
+            var skills = await _userRepository.GetSkillsByIdAsync(userDto.skillsId);
+            foreach (var skill in skills)
+            {
+                user.Skills.Add(skill);
+            }
+        }
         await _userRepository.AddUserAsync(user);
     }
     
@@ -78,5 +94,5 @@ public class UsersController : ControllerBase
         return new JsonResult(await _userRepository.GetAllMentorsAsync());
     }
 
-    public record UserDto(string FirstName, string LastName, string? Description, string? TelegramId, bool IsMentor);
+    public record UserDto(string FirstName, string LastName, string? Description, string? TelegramId, bool IsMentor, ICollection<int> skillsId = null);
 }

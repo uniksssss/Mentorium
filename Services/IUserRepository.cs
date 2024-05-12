@@ -10,4 +10,7 @@ public interface IUserRepository
     public Task<User?[]> GetAllMentorsAsync();
     public Task AddUserAsync(User user);
     public Task UpdateUserAsync(User user);
+
+    public Task<Skill?[]> GetAllSkillsAsync();
+    public Task<Skill?[]> GetSkillsByIdAsync(ICollection<int> skillsId);
 }

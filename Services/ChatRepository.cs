@@ -31,12 +31,12 @@ namespace Mentorium.Services
 
         public async Task<Chat?[]> GetAllChatsAsync()
         {
-            return await _context.Chats.Include(c => c.Users).ToArrayAsync();
+            return await _context.Chats.Include(c => c.Users).ThenInclude(u => u.Skills).ToArrayAsync();
         }
 
         public async Task<Chat?[]> GetAllUserChatsAsync(int userId)
         {
-            return await _context.Chats.Include(c => c.Users).Where(c => c.Users.Any(c => c.UserId == userId)).ToArrayAsync();
+            return await _context.Chats.Include(c => c.Users).ThenInclude(u => u.Skills).Where(c => c.Users.Any(c => c.UserId == userId)).ToArrayAsync();
         }
 
         public async Task<Message?[]> GetAllMessageByChatIdAsync(int chatId)
