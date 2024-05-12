@@ -3,6 +3,7 @@ using Mentorium.Models;
 using Mentorium.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Mentorium.Dto;
 
 namespace Mentorium.Controllers
 {
@@ -26,7 +27,7 @@ namespace Mentorium.Controllers
 
         [Authorize]
         [HttpPost("/api/chats/new/{userId}")]
-        public async Task<IActionResult> CreateChat(int userId)
+        public async Task<ActionResult<ChatResponseDto>> CreateChat(int userId)
         {
             var githubId = int.Parse(HttpContext.User.Claims
                 .First(e => e.Type == ClaimConstants.GithubIdClaimName)
@@ -35,11 +36,19 @@ namespace Mentorium.Controllers
             var firstUser = await _userRepository.GetUserByGithubIdAsync(githubId);
             var secondUser = await _userRepository.GetUserByUserIdAsync(userId);
             if (firstUser is null || secondUser is null)
+            {
                 return BadRequest();
+            }
+            var allChats = await _chatRepository.GetAllUserChatsAsync(firstUser.UserId);
+            var existingChat = allChats.Where(c => c.Users.Any(u => u.UserId == secondUser.UserId)).FirstOrDefault();
+            if (existingChat is not null)
+            {
+                return new ChatResponseDto(existingChat.ChatId);
+            }
 
             var chat = new Chat { Users = { firstUser, secondUser } };
             await _chatRepository.AddChatAsync(chat);
-            return Ok();
+            return new ChatResponseDto(chat.ChatId);
         }
 
         [Authorize]
@@ -47,6 +56,13 @@ namespace Mentorium.Controllers
         public async Task<IActionResult> GetAllChats()
         {
             return new JsonResult(await _chatRepository.GetAllChatsAsync());
+        }
+
+        [Authorize]
+        [HttpGet("api/chats/user/{userId}")]
+        public async Task<IActionResult> GetAllUserChats(int userId)
+        {
+            return new JsonResult(await _chatRepository.GetAllUserChatsAsync(userId));
         }
 
         [Authorize]

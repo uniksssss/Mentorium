@@ -34,6 +34,11 @@ namespace Mentorium.Services
             return await _context.Chats.Include(c => c.Users).ToArrayAsync();
         }
 
+        public async Task<Chat?[]> GetAllUserChatsAsync(int userId)
+        {
+            return await _context.Chats.Include(c => c.Users).Where(c => c.Users.Any(c => c.UserId == userId)).ToArrayAsync();
+        }
+
         public async Task<Message?[]> GetAllMessageByChatIdAsync(int chatId)
         {
             return await _context.Messages.Where(m => m.ChatId == chatId).OrderBy(m => m.DateTime).ToArrayAsync();

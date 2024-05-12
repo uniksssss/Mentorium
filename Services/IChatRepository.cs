@@ -6,6 +6,7 @@ namespace Mentorium.Services
     {
         public Task<Chat?> GetChatByChatIdAsync(int chatId);
         public Task<Chat?[]> GetAllChatsAsync();
+        public Task<Chat?[]> GetAllUserChatsAsync(int userId);
         public Task<Message?[]> GetAllMessageByChatIdAsync(int chatId);
         public Task AddChatAsync(Chat chat);
         public Task RemoveChatAsync(Chat chat);
