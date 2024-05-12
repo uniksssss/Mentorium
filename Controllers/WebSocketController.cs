@@ -59,24 +59,24 @@ public class WebSocketController : ControllerBase
         var messages = await _chatRepository.GetAllMessageByChatIdAsync(chat.ChatId);
         foreach (var message in messages)
         {
-            _users.TryGetValue(message!.UserId, out var messageUser);
             var sendMessage = new SendMessage
             {
                 ChatId = message!.ChatId,
                 DateTime = message.DateTime,
                 MessageId = message.MessageId,
                 MessageText = message.MessageText,
-                User = messageUser!
+                User = user,
+                IsOwn = message.UserId == user.UserId
             };
             var json = JObject.FromObject(sendMessage);
             var messageBytes = Encoding.UTF8.GetBytes(json.ToString());
-            
+
             await webSocket.SendAsync(messageBytes,
                 WebSocketMessageType.Text,
                 true,
                 CancellationToken.None);
         }
-        
+
         var buffer = new byte[1024 * 4];
         var receiveResult = await webSocket.ReceiveAsync(
             new ArraySegment<byte>(buffer), CancellationToken.None);
@@ -103,18 +103,20 @@ public class WebSocketController : ControllerBase
                 MessageText = message.MessageText,
                 User = messageUser!
             };
-            var json = JObject.FromObject(sendMessage);
-            var messageBytes = Encoding.UTF8.GetBytes(json.ToString());
 
             foreach (var userId in chat.Users.Select(u => u.UserId))
             {
+                sendMessage.IsOwn = message.UserId == userId;
+                var json = JObject.FromObject(sendMessage);
+                var messageBytes = Encoding.UTF8.GetBytes(json.ToString());
+                
                 if (!_clients.TryGetValue(userId, out var userWebSocket))
                     continue;
                 
                 await userWebSocket.SendAsync(
-                    new ArraySegment<byte>(messageBytes, 0, receiveResult.Count),
-                    receiveResult.MessageType,
-                    receiveResult.EndOfMessage,
+                    messageBytes,
+                    WebSocketMessageType.Text,
+                    true,
                     CancellationToken.None);
             }
 
@@ -142,4 +144,5 @@ public class SendMessage
     public User User { get; set; }
     public DateTime DateTime { get; set; }
     public string MessageText { get; set; }
+    public bool IsOwn { get; set; }
 }

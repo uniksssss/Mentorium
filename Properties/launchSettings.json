@@ -18,7 +18,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development",
         "CLIENT_ID": "9061cd5e416f37e029f4",
         "CLIENT_SECRET": "9f4b7a018587a7277cdb3acf712da487269aa0cd",
-        "DB_HOST": "localhost",
+        "DB_HOST": "mentorium_db",
         "DB_PORT": "5432",
         "DB_NAME": "mentorium",
         "DB_USERNAME": "postgres",

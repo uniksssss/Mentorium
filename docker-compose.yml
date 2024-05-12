@@ -27,3 +27,9 @@
       POSTGRES_DB: mentorium
     ports:
       - 5433:5432
+    volumes:
+      - db-data:/etc/data
+
+volumes:
+  db-data:
+    name: "mentorium-data"
